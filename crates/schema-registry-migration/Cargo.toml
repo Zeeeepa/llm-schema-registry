@@ -5,6 +5,12 @@ edition.workspace = true
 rust-version.workspace = true
 authors.workspace = true
 license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+description = "Schema migration tools with multi-language code generation (Python, TypeScript, Java, Go, SQL)"
+keywords = ["schema", "migration", "code-generation", "evolution", "transformation"]
+categories = ["development-tools", "template-engine"]
+readme = "README.md"
 
 [dependencies]
 # Internal crates

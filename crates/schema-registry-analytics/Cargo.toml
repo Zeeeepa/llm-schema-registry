@@ -6,6 +6,11 @@ rust-version.workspace = true
 authors.workspace = true
 license.workspace = true
 repository.workspace = true
+homepage.workspace = true
+description = "Analytics engine for usage tracking, metrics collection, and reporting"
+keywords = ["analytics", "metrics", "reporting", "telemetry", "usage-tracking"]
+categories = ["development-tools", "data-structures"]
+readme = "README.md"
 
 [dependencies]
 # Internal dependencies

@@ -5,6 +5,12 @@ edition.workspace = true
 rust-version.workspace = true
 authors.workspace = true
 license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+description = "gRPC and REST API definitions for the LLM Schema Registry"
+keywords = ["api", "grpc", "rest", "schema-registry", "protobuf"]
+categories = ["api-bindings", "web-programming::http-server"]
+readme = "README.md"
 
 [dependencies]
 schema-registry-core = { workspace = true }

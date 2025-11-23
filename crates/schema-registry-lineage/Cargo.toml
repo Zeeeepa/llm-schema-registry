@@ -6,6 +6,11 @@ rust-version.workspace = true
 authors.workspace = true
 license.workspace = true
 repository.workspace = true
+homepage.workspace = true
+description = "Schema lineage tracking with dependency graphs, impact analysis, and visualization"
+keywords = ["lineage", "dependency-graph", "impact-analysis", "schema-evolution"]
+categories = ["development-tools", "visualization", "data-structures"]
+readme = "README.md"
 
 [dependencies]
 # Internal dependencies

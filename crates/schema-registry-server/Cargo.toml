@@ -5,6 +5,12 @@ edition.workspace = true
 rust-version.workspace = true
 authors.workspace = true
 license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+description = "Production-ready server for the LLM Schema Registry with gRPC and REST APIs"
+keywords = ["server", "schema-registry", "grpc", "rest-api", "microservice"]
+categories = ["web-programming::http-server", "development-tools"]
+readme = "README.md"
 
 [[bin]]
 name = "schema-registry-server"

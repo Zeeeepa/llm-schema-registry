@@ -5,6 +5,12 @@ edition.workspace = true
 rust-version.workspace = true
 authors.workspace = true
 license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+description = "Core types and traits for the LLM Schema Registry platform"
+keywords = ["schema", "registry", "llm", "validation", "compatibility"]
+categories = ["data-structures", "development-tools", "api-bindings"]
+readme = "README.md"
 
 [dependencies]
 # Async

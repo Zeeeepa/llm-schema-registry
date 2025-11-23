@@ -5,6 +5,12 @@ edition.workspace = true
 rust-version.workspace = true
 authors.workspace = true
 license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+description = "Observability, metrics, tracing, and monitoring for the Schema Registry"
+keywords = ["observability", "metrics", "tracing", "monitoring", "prometheus"]
+categories = ["development-tools", "asynchronous"]
+readme = "README.md"
 
 [dependencies]
 schema-registry-core = { workspace = true }

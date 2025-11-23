@@ -5,6 +5,12 @@ edition.workspace = true
 rust-version.workspace = true
 authors.workspace = true
 license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+description = "Storage backends for the LLM Schema Registry (PostgreSQL, S3, Redis)"
+keywords = ["schema", "registry", "storage", "database", "cache"]
+categories = ["database", "caching", "development-tools"]
+readme = "README.md"
 
 [dependencies]
 # Internal

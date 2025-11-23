@@ -5,6 +5,12 @@ edition.workspace = true
 rust-version.workspace = true
 authors.workspace = true
 license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+description = "Command-line interface for managing schemas, lineage, analytics, and migrations"
+keywords = ["cli", "schema", "registry", "command-line", "terminal"]
+categories = ["command-line-utilities", "development-tools"]
+readme = "README.md"
 
 [[bin]]
 name = "schema-cli"
@@ -13,13 +19,13 @@ path = "src/main.rs"
 [dependencies]
 # Internal crates
 schema-registry-core = { workspace = true }
-schema-registry-storage = { path = "../schema-registry-storage" }
-schema-registry-validation = { path = "../schema-registry-validation" }
-schema-registry-compatibility = { path = "../schema-registry-compatibility" }
-schema-registry-analytics = { path = "../schema-registry-analytics" }
-schema-registry-lineage = { path = "../schema-registry-lineage" }
-schema-registry-migration = { path = "../schema-registry-migration" }
-schema-registry-security = { path = "../schema-registry-security" }
+schema-registry-storage = { workspace = true }
+schema-registry-validation = { workspace = true }
+schema-registry-compatibility = { workspace = true }
+schema-registry-analytics = { workspace = true }
+schema-registry-lineage = { workspace = true }
+schema-registry-migration = { workspace = true }
+schema-registry-security = { workspace = true }
 
 # Async runtime
 tokio = { workspace = true }

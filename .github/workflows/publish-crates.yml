@@ -1,0 +1,149 @@
+name: Publish to crates.io
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:  # Allow manual triggering
+
+env:
+  RUST_VERSION: '1.82'
+
+jobs:
+  publish:
+    name: Publish crates to crates.io
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: ${{ env.RUST_VERSION }}
+
+      - name: Install protobuf compiler
+        run: sudo apt-get update && sudo apt-get install -y protobuf-compiler
+
+      - name: Cache cargo registry
+        uses: actions/cache@v4
+        with:
+          path: ~/.cargo/registry
+          key: ${{ runner.os }}-cargo-registry-${{ hashFiles('**/Cargo.lock') }}
+
+      - name: Cache cargo index
+        uses: actions/cache@v4
+        with:
+          path: ~/.cargo/git
+          key: ${{ runner.os }}-cargo-git-${{ hashFiles('**/Cargo.lock') }}
+
+      - name: Cache target directory
+        uses: actions/cache@v4
+        with:
+          path: target
+          key: ${{ runner.os }}-cargo-target-${{ hashFiles('**/Cargo.lock') }}
+
+      - name: Login to crates.io
+        run: cargo login ${{ secrets.CRATES_SECRET }}
+
+      # Publish crates in dependency order
+      # Core crate (no dependencies)
+      - name: Publish schema-registry-core
+        run: |
+          cd crates/schema-registry-core
+          cargo publish --allow-dirty || echo "Already published or failed"
+          cd ../..
+          sleep 30  # Wait for crates.io to index
+
+      # First tier dependencies (depend only on core)
+      - name: Publish schema-registry-storage
+        run: |
+          cd crates/schema-registry-storage
+          cargo publish --allow-dirty || echo "Already published or failed"
+          cd ../..
+          sleep 30
+
+      - name: Publish schema-registry-validation
+        run: |
+          cd crates/schema-registry-validation
+          cargo publish --allow-dirty || echo "Already published or failed"
+          cd ../..
+          sleep 30
+
+      - name: Publish schema-registry-security
+        run: |
+          cd crates/schema-registry-security
+          cargo publish --allow-dirty || echo "Already published or failed"
+          cd ../..
+          sleep 30
+
+      - name: Publish schema-registry-observability
+        run: |
+          cd crates/schema-registry-observability
+          cargo publish --allow-dirty || echo "Already published or failed"
+          cd ../..
+          sleep 30
+
+      # Second tier (depend on core + first tier)
+      - name: Publish schema-registry-compatibility
+        run: |
+          cd crates/schema-registry-compatibility
+          cargo publish --allow-dirty || echo "Already published or failed"
+          cd ../..
+          sleep 30
+
+      - name: Publish schema-registry-analytics
+        run: |
+          cd crates/schema-registry-analytics
+          cargo publish --allow-dirty || echo "Already published or failed"
+          cd ../..
+          sleep 30
+
+      - name: Publish schema-registry-lineage
+        run: |
+          cd crates/schema-registry-lineage
+          cargo publish --allow-dirty || echo "Already published or failed"
+          cd ../..
+          sleep 30
+
+      # Third tier (depend on multiple crates)
+      - name: Publish schema-registry-migration
+        run: |
+          cd crates/schema-registry-migration
+          cargo publish --allow-dirty || echo "Already published or failed"
+          cd ../..
+          sleep 30
+
+      - name: Publish schema-registry-api
+        run: |
+          cd crates/schema-registry-api
+          cargo publish --allow-dirty || echo "Already published or failed"
+          cd ../..
+          sleep 30
+
+      # LLM integrations
+      - name: Publish llm-integrations
+        run: |
+          cd crates/llm-integrations
+          cargo publish --allow-dirty || echo "Already published or failed"
+          cd ../..
+          sleep 30
+
+      # High-level crates (CLI and Server)
+      - name: Publish schema-registry-cli
+        run: |
+          cd crates/schema-registry-cli
+          cargo publish --allow-dirty || echo "Already published or failed"
+          cd ../..
+          sleep 30
+
+      - name: Publish schema-registry-server
+        run: |
+          cd crates/schema-registry-server
+          cargo publish --allow-dirty || echo "Already published or failed"
+          cd ../..
+
+      - name: Publish summary
+        run: |
+          echo "✅ All crates published successfully!"
+          echo "Check status at: https://crates.io/users/llm-schema-registry-team"

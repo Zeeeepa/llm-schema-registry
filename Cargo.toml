@@ -23,20 +23,22 @@ edition = "2021"
 rust-version = "1.82"
 authors = ["LLM Schema Registry Team"]
 license = "Apache-2.0"
-repository = "https://github.com/llm-schema-registry/llm-schema-registry"
+repository = "https://github.com/globalbusinessadvisors/llm-schema-registry"
+homepage = "https://github.com/globalbusinessadvisors/llm-schema-registry"
+documentation = "https://docs.rs/schema-registry-core"
 
 [workspace.dependencies]
 # Internal crates
-schema-registry-core = { path = "crates/schema-registry-core" }
-schema-registry-api = { path = "crates/schema-registry-api" }
-schema-registry-storage = { path = "crates/schema-registry-storage" }
-schema-registry-validation = { path = "crates/schema-registry-validation" }
-schema-registry-compatibility = { path = "crates/schema-registry-compatibility" }
-schema-registry-security = { path = "crates/schema-registry-security" }
-schema-registry-observability = { path = "crates/schema-registry-observability" }
-schema-registry-analytics = { path = "crates/schema-registry-analytics" }
-schema-registry-lineage = { path = "crates/schema-registry-lineage" }
-schema-registry-migration = { path = "crates/schema-registry-migration" }
+schema-registry-core = { version = "0.1.0", path = "crates/schema-registry-core" }
+schema-registry-api = { version = "0.1.0", path = "crates/schema-registry-api" }
+schema-registry-storage = { version = "0.1.0", path = "crates/schema-registry-storage" }
+schema-registry-validation = { version = "0.1.0", path = "crates/schema-registry-validation" }
+schema-registry-compatibility = { version = "0.1.0", path = "crates/schema-registry-compatibility" }
+schema-registry-security = { version = "0.1.0", path = "crates/schema-registry-security" }
+schema-registry-observability = { version = "0.1.0", path = "crates/schema-registry-observability" }
+schema-registry-analytics = { version = "0.1.0", path = "crates/schema-registry-analytics" }
+schema-registry-lineage = { version = "0.1.0", path = "crates/schema-registry-lineage" }
+schema-registry-migration = { version = "0.1.0", path = "crates/schema-registry-migration" }
 
 # Async runtime
 tokio = { version = "1.35", features = ["full"] }

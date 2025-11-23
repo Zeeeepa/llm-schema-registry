@@ -5,6 +5,12 @@ edition.workspace = true
 rust-version.workspace = true
 authors.workspace = true
 license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+description = "Schema compatibility checking with backward, forward, and full compatibility modes"
+keywords = ["schema", "compatibility", "versioning", "migration", "semver"]
+categories = ["development-tools", "data-structures"]
+readme = "README.md"
 
 [dependencies]
 # Internal

@@ -5,6 +5,12 @@ edition.workspace = true
 rust-version.workspace = true
 authors.workspace = true
 license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+description = "Schema validation engine supporting JSON Schema, Avro, Protobuf, and Thrift"
+keywords = ["schema", "validation", "json-schema", "avro", "protobuf"]
+categories = ["parser-implementations", "development-tools", "data-structures"]
+readme = "README.md"
 
 [dependencies]
 schema-registry-core = { workspace = true }

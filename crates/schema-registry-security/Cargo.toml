@@ -5,6 +5,12 @@ edition.workspace = true
 rust-version.workspace = true
 authors.workspace = true
 license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+description = "Security, authentication, authorization, and SOC 2 compliance for LLM Schema Registry"
+keywords = ["security", "authentication", "authorization", "soc2", "compliance"]
+categories = ["authentication", "cryptography", "development-tools"]
+readme = "README.md"
 
 [dependencies]
 schema-registry-core = { workspace = true }
